@@ -23,8 +23,12 @@ app.use((_req, res, next) => {
 
 app.use('/api/', router);
 
+const taskRoutes =express.Router({ mergeParams: true });
 
-// router.use('', gamesRoutes);
+taskRoutes.get('/', (_req,res) =>{
+  res.json({ message: 'Hello World' });
+});
+router.use('', taskRoutes);
 
 
 app.listen(SERVER_PORT, () => {

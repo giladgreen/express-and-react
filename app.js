@@ -16,7 +16,11 @@ app.use(function (_req, res, next) {
     next();
 });
 app.use('/api/', router);
-// router.use('', gamesRoutes);
+var taskRoutes = express.Router({ mergeParams: true });
+taskRoutes.get('/', function (_req, res) {
+    res.json({ message: 'Hello World' });
+});
+router.use('', taskRoutes);
 app.listen(SERVER_PORT, function () {
     console.log('### startListening ##');
     console.log("Node app is running on port:  ".concat(SERVER_PORT));
